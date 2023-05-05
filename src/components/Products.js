@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 import ReactPaginate from "react-paginate";
 import "../style/Products.css";
 
@@ -26,7 +28,7 @@ const Products = ({ products }) => {
               <div className="product-description">
                 <strong>{product.title}</strong>
                 <p className="brand">{product.brand}</p>
-                <p className="rating">Rating: {product.rating}</p>
+                <p className="rating"><FontAwesomeIcon icon={faStar} className="star"/> {product.rating} Ratings</p>
                 <p className="price">{product.price}€</p>
               </div>
               <div className="button-container">
@@ -37,17 +39,17 @@ const Products = ({ products }) => {
           .slice(pagesVisited, pagesVisited + productsPerPage)}
       </ul>
       <ReactPaginate
-        previousLabel={"Previous"}
-        nextLabel={"Next"}
+        previousLabel={"<"}
+        nextLabel={">"}
         pageCount={pageCount}
         marginPagesDisplayed={1}
         pageRangeDisplayed={1}
         onPageChange={changePage}
-        containerClassName={"paginationButtons"}
-        previousLinkClassName={"previousButton"}
-        nextClassName={"nextButton"}
-        disabledClassName={"paginationDisabled"}
-        activeClassName={"paginationActive"}
+        containerClassName={"pagination-buttons"}
+        previousLinkClassName={"previous-button"}
+        nextLinkClassName={"next-button"}
+        disabledClassName={"pagination-disabled"}
+        activeClassName={"pagination-active"}
       />
     </main>
   );

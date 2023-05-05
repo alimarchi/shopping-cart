@@ -47,8 +47,12 @@ ul {
 
 .brand,
 .rating {
-  margin-top: 2px;
-  margin-bottom: 2px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.star {
+    color: var(--medium-blue);
 }
 
 .price {
@@ -79,16 +83,17 @@ ul {
 
 /* pagination style */
 
-.paginationButtons {
+.pagination-buttons {
   width: 50%;
   height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto 50px;
+  font-family: "Montserrat", sans-serif;
 }
 
-.paginationButtons a {
+.pagination-buttons a {
   padding: 10px;
   margin: 8px;
   border: 1px solid var(--dark-blue);
@@ -97,22 +102,18 @@ ul {
   cursor: pointer;
 }
 
-.paginationButtons a:not(.paginationDisabled):hover {
+.pagination-buttons a:hover {
   color: white;
   background-color: var(--dark-blue);
 }
 
-.paginationActive a {
+.pagination-active a {
   color: white;
   background-color: var(--dark-blue);
 }
 
-.paginationDisabled a {
+.pagination-disabled a {
   opacity: 0.5;
   cursor: unset;
 }
 
-.previousButton a:not(.paginationDisabled):hover {
-    color: white;
-    background-color: var(--dark-blue);
-  }
