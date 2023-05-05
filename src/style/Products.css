@@ -1,0 +1,118 @@
+.products {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.products-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.product-card {
+  border: 1px solid var(--dark-blue);
+  border-radius: 20px;
+  padding: 15px;
+  margin-bottom: 50px;
+  width: 250px;
+  height: 400px;
+}
+
+.product-card:hover {
+  border: 2px solid var(--dark-blue);
+}
+
+.img-container {
+  width: 250px;
+  height: 200px;
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.product-description {
+  margin-top: 20px;
+  margin-left: 5px;
+}
+
+.brand,
+.rating {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-button {
+  color: white;
+  background-color: var(--medium-blue);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  border: 1px solid transparent;
+  padding: 8px 20px;
+  border-radius: 13px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.add-button:hover {
+  background-color: var(--dark-blue);
+}
+
+/* pagination style */
+
+.paginationButtons {
+  width: 50%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 50px;
+}
+
+.paginationButtons a {
+  padding: 10px;
+  margin: 8px;
+  border: 1px solid var(--dark-blue);
+  border-radius: 5px;
+  color: var(--dark-blue);
+  cursor: pointer;
+}
+
+.paginationButtons a:not(.paginationDisabled):hover {
+  color: white;
+  background-color: var(--dark-blue);
+}
+
+.paginationActive a {
+  color: white;
+  background-color: var(--dark-blue);
+}
+
+.paginationDisabled a {
+  opacity: 0.5;
+  cursor: unset;
+}
+
+.previousButton a:not(.paginationDisabled):hover {
+    color: white;
+    background-color: var(--dark-blue);
+  }
