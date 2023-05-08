@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import ReactPaginate from "react-paginate";
 import "../style/Products.css";
 
 const Products = ({ products }) => {
-  const [pageNumber, setPageNumber] = useState(1);
+  console.log(products);
+
+  const [pageNumber, setPageNumber] = useState(0);
 
   const productsPerPage = 12;
   const pagesVisited = pageNumber * productsPerPage;
@@ -28,7 +30,10 @@ const Products = ({ products }) => {
               <div className="product-description">
                 <strong>{product.title}</strong>
                 <p className="brand">{product.brand}</p>
-                <p className="rating"><FontAwesomeIcon icon={faStar} className="star"/> {product.rating} Ratings</p>
+                <p className="rating">
+                  <FontAwesomeIcon icon={faStar} className="star" />{" "}
+                  {product.rating} Ratings
+                </p>
                 <p className="price">{product.price}€</p>
               </div>
               <div className="button-container">

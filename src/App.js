@@ -3,6 +3,7 @@ import "./App.css";
 import Products from "./components/Products";
 import Loader from "./components/UI/spinner/Loader";
 import { getProducts } from "./services/getProducts";
+import Header from "./components/Header";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -12,6 +13,23 @@ function App() {
     category: "all",
     minPrice: 0,
   });
+
+  const filterProducts = (products, filters) => {
+    return products.filter((product) => {
+      // console.log(product);
+      // console.log(product.category);
+      // console.log(filters.category);
+      // console.log(filters.minPrice);
+      return (
+        product.price >= filters.minPrice &&
+        (filters.category === "all" || product.category === filters.category)
+      );
+    });
+  };
+
+  const filteredProducts = filterProducts(products, filters);
+
+  console.log(filteredProducts)
 
   useEffect(() => {
     setLoading(true);
@@ -23,8 +41,9 @@ function App() {
 
   return (
     <>
+      <Header changeFilters={setFilters} />
       {loading && <Loader />}
-      {!loading && <Products products={products} />}
+      {!loading && <Products products={filteredProducts} />}
     </>
   );
 }

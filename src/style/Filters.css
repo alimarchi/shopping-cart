@@ -1,0 +1,36 @@
+.filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.filters > div {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Tablet devices */
+@media (min-width: 576px) {
+}
+
+/* Laptop devices */
+@media (min-width: 768px) {
+    .filters {
+        justify-content: space-between;
+        margin: 0 20px;
+    }
+}
+/* Desktop */
+@media (min-width: 992px) {
+}
+/* Large devices */
+@media (min-width: 1200px) {
+}
+
+/* XXL devices */
+@media (min-width: 1400px) {
+}
+

@@ -3,6 +3,7 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+
 .products-list {
   display: flex;
   justify-content: space-around;

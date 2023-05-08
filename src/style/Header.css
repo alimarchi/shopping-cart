@@ -1,0 +1,30 @@
+.header {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header h1 {
+  color: var(--dark-blue);
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--dark-blue);
+  padding-left: 10px;
+}
+
+/* Tablet devices */
+@media (min-width: 576px) {
+}
+
+/* Laptop devices */
+@media (min-width: 768px) {
+}
+/* Desktop */
+@media (min-width: 992px) {
+}
+/* Large devices */
+@media (min-width: 1200px) {
+}
+
+/* XXL devices */
+@media (min-width: 1400px) {
+}
