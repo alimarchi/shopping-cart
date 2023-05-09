@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useId } from "react";
 import "../style/Filters.css";
+
+// useId de react es un hook que genera un identificador único
 
 const Filters = ({ onChange }) => {
   const [minPrice, setMinPrice] = useState(0);
+  const minPriceFilterId = useId();
+  const categoryFilterId = useId();
 
   const handleMinPrice = (event) => {
     setMinPrice(event.target.value);
@@ -22,10 +26,10 @@ const Filters = ({ onChange }) => {
   return (
     <section className="filters">
       <div>
-        <label htmlFor="price">Price</label>
+        <label htmlFor={minPriceFilterId}>Price</label>
         <input
           type="range"
-          id="price"
+          id={minPriceFilterId}
           min="0"
           max="500"
           onChange={handleMinPrice}
@@ -33,8 +37,8 @@ const Filters = ({ onChange }) => {
         <span>€{minPrice}</span>
       </div>
       <div>
-        <label htmlFor="category">Category</label>
-        <select id="category" onChange={handleChangeCategory}>
+        <label htmlFor={categoryFilterId}>Category</label>
+        <select id={categoryFilterId} onChange={handleChangeCategory}>
           <option value="all">All</option>
           <option value="smartphones">Smartphones</option>
           <option value="skincare">Skincare</option>
