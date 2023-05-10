@@ -16,18 +16,22 @@ const Cart = () => {
       </label>
       <input id={cartCheckBoxId} type="checkbox" hidden />
       <aside className="cart">
-        <ul>
-          {cart.map(product => (
-            <CartItem key={product.id} addToCart={() => addToCart(product)} {...product} />
-          ))
-
-          }
-        </ul>
-        <div className="button-container">
-          <button className="clear-button" onClick={clearCart}>
-            Clear
-          </button>
-        </div>
+        {
+          cart.length > 0 ? (<> <ul>
+            {cart.map(product => (
+              <CartItem key={product.id} addToCart={() => addToCart(product)} {...product} />
+            ))
+  
+            }
+          </ul>
+          <div className="button-container">
+            <button className="clear-button" onClick={clearCart}>
+              Clear
+            </button>
+          </div>
+          </>) : (<><p className="empty-cart">Your cart is empty!</p></>)
+        }
+        
       </aside>
     </>
   );

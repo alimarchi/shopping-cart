@@ -17,7 +17,7 @@ ul {
 }
 
 .product-card {
-  border: 1px solid var(--dark-blue);
+  border: 2px solid var(--medium-blue);
   border-radius: 20px;
   padding: 15px;
   margin-bottom: 50px;

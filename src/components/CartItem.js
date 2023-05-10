@@ -5,9 +5,12 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 const CartItem = ({ thumbnail, price, title, quantity, addToCart }) => {
   return (
     <li>
-      <img src={thumbnail} alt={title} />
-      <div className="product-info">
-        <strong>{title}</strong> - €{price}
+      <div className="cart-item">
+        <div className="img-container"><img src={thumbnail} alt={title} /></div>
+        <div className="product-info">
+          <p>{title}</p>
+          <p>{price}€</p>
+        </div>
       </div>
       <footer>
         <small>Qty: {quantity}</small>
