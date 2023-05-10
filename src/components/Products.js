@@ -3,8 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import ReactPaginate from "react-paginate";
 import "../style/Products.css";
+import useCart from "../hooks/useCart";
 
 const Products = ({ products }) => {
+  const { addToCart } = useCart();
 
   const [pageNumber, setPageNumber] = useState(0);
 
@@ -36,7 +38,12 @@ const Products = ({ products }) => {
                 <p className="price">{product.price}€</p>
               </div>
               <div className="button-container">
-                <button className="add-button">Add to cart</button>
+                <button
+                  className="add-button"
+                  onClick={() => addToCart(product)}
+                >
+                  Add to cart
+                </button>
               </div>
             </li>
           ))

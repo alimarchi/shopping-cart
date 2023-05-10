@@ -5,6 +5,7 @@ import Loader from "./components/UI/spinner/Loader";
 import Header from "./components/Header";
 import useFilters from "./hooks/useFilters";
 import { getProducts } from "./services/getProducts";
+import { CartProvider } from "./context/cart";
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -25,11 +26,11 @@ const App = () => {
   }, []);
 
   return (
-    <>
-      <Header/>
+    <CartProvider>
+      <Header />
       {loading && <Loader />}
       {!loading && <Products products={filteredProducts} />}
-    </>
+    </CartProvider>
   );
 };
 

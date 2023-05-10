@@ -1,10 +1,13 @@
 import "../style/Cart.css";
 import { useId } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import useCart from "../hooks/useCart";
+import CartItem from "./CartItem";
 
 const Cart = () => {
   const cartCheckBoxId = useId();
+  const { cart, clearCart, addToCart } = useCart();
 
   return (
     <>
@@ -14,24 +17,16 @@ const Cart = () => {
       <input id={cartCheckBoxId} type="checkbox" hidden />
       <aside className="cart">
         <ul>
-          <li>
-            <img
-              src="https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-              alt="iPhone"
-            />
-            <div className="product-info">
-              <strong>iPhone</strong> - €899
-            </div>
-            <footer>
-              <small>Qty: 1</small>
-              <button className="plus-button">
-                <FontAwesomeIcon icon={faPlus} />
-              </button>
-            </footer>
-          </li>
+          {cart.map(product => (
+            <CartItem key={product.id} addToCart={() => addToCart(product)} {...product} />
+          ))
+
+          }
         </ul>
         <div className="button-container">
-          <button className="clear-button">Clear</button>
+          <button className="clear-button" onClick={clearCart}>
+            Clear
+          </button>
         </div>
       </aside>
     </>
