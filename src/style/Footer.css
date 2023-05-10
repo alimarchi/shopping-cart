@@ -1,0 +1,17 @@
+.footer {
+  background-color: var(--dark-blue);
+  color: white;
+  text-align: center;
+  margin-top: auto;
+  padding: 6px;
+}
+
+.heart {
+  color: var(--yellow);
+  font-size: 22px;
+}
+
+.footer-text a {
+  text-decoration: underline;
+  color: var(--yellow);
+}

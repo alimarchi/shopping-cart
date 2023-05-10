@@ -3,6 +3,7 @@ import "./App.css";
 import Products from "./components/Products";
 import Loader from "./components/UI/spinner/Loader";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import useFilters from "./hooks/useFilters";
 import { getProducts } from "./services/getProducts";
 import { CartProvider } from "./context/cart";
@@ -26,11 +27,14 @@ const App = () => {
   }, []);
 
   return (
-    <CartProvider>
-      <Header />
-      {loading && <Loader />}
-      {!loading && <Products products={filteredProducts} />}
-    </CartProvider>
+    <>
+      <CartProvider>
+        <Header />
+        {loading && <Loader />}
+        {!loading && <Products products={filteredProducts} />}
+      </CartProvider>
+      <Footer />
+    </>
   );
 };
 

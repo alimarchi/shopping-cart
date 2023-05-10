@@ -1,37 +1,64 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useReducer } from "react";
 
 // create the context
 export const CartContext = createContext();
 
+const initialState = [];
+const reducer = (state, action) => {
+  const { type: actionType, payload: actionPayload } = action;
+
+  switch (actionType) {
+    case "ADD_TO_CART": {
+      const { id } = actionPayload;
+      // check if the product is already in the cart
+      const productInCartIndex = state.findIndex((item) => item.id === id);
+
+      if (productInCartIndex >= 0) {
+        const newState = structuredClone(state); // structuredClone creates a deep copy
+        newState[productInCartIndex].quantity += 1;
+        return newState;
+      }
+
+      // if the product is not in the cart
+      return [
+        ...state,
+        {
+          ...actionPayload, // product
+          quantity: 1,
+        },
+      ];
+    }
+    // case "REMOVE_FROM_CART": {
+    //   const { id } = actionPayload;
+    //   return state.filter((item) => item.id !== id);
+    // }
+    case "CLEAR_CART": {
+      return initialState;
+    }
+  }
+  return state;
+};
+
 // create the provider
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  const addToCart = (product) => {
-    // check if the product is already in the cart
-    const productInCartIndex = cart.findIndex((item) => item.id === product.id);
+  const addToCart = (product) =>
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: product,
+    });
 
-    if (productInCartIndex >= 0) {
-      const newCart = structuredClone(cart); // structuredClone hace una copia profunda
-      newCart[productInCartIndex].quantity += 1;
-      return setCart(newCart);
-    }
+  //   const removeFromCart = (product) =>
+  //     dispatch({
+  //       type: "REMOVE_FROM_CART",
+  //       payload: product,
+  //     });
 
-    // if the product is not in the cart
-    setCart((prevStat) => [
-      ...prevStat,
-      {
-        ...product,
-        quantity: 1,
-      },
-    ]);
-  };
-  const clearCart = () => {
-    setCart([]);
-  };
+  const clearCart = () => dispatch({ type: "CLEAR_CART" });
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, clearCart }}>
+    <CartContext.Provider value={{ cart: state, addToCart, clearCart }}>
       {children}
     </CartContext.Provider>
   );
