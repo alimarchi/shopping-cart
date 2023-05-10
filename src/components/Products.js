@@ -5,7 +5,6 @@ import ReactPaginate from "react-paginate";
 import "../style/Products.css";
 
 const Products = ({ products }) => {
-  console.log(products);
 
   const [pageNumber, setPageNumber] = useState(0);
 

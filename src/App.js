@@ -2,19 +2,19 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Products from "./components/Products";
 import Loader from "./components/UI/spinner/Loader";
-import { getProducts } from "./services/getProducts";
 import Header from "./components/Header";
 import useFilters from "./hooks/useFilters";
+import { getProducts } from "./services/getProducts";
 
 const App = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const { filterProducts, setFilters } = useFilters();
+  const { filterProducts } = useFilters();
 
   const filteredProducts = filterProducts(products);
 
-  console.log(filteredProducts);
+  //console.log(filteredProducts);
 
   useEffect(() => {
     setLoading(true);
@@ -26,7 +26,7 @@ const App = () => {
 
   return (
     <>
-      <Header changeFilters={setFilters} />
+      <Header/>
       {loading && <Loader />}
       {!loading && <Products products={filteredProducts} />}
     </>
