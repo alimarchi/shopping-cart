@@ -6,14 +6,14 @@ const CartItem = ({ thumbnail, price, title, quantity, addToCart }) => {
   return (
     <li>
       <div className="cart-item">
-        <div className="img-container"><img src={thumbnail} alt={title} /></div>
+        <div className="cart-img-container"><img src={thumbnail} alt={title} /></div>
         <div className="product-info">
           <p>{title}</p>
-          <p>{price}€</p>
+          <p className="cart-price">{price}€</p>
         </div>
       </div>
-      <footer>
-        <small>Qty: {quantity}</small>
+      <footer className="item-footer">
+        <p >Qty: <strong>{quantity}</strong></p>
         <button className="plus-button" onClick={addToCart}>
           <FontAwesomeIcon icon={faPlus} />
         </button>

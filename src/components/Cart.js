@@ -1,38 +1,48 @@
 import "../style/Cart.css";
-import { useId } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import useCart from "../hooks/useCart";
 import CartItem from "./CartItem";
 
-const Cart = () => {
-  const cartCheckBoxId = useId();
+const Cart = ({ visible, handleVisibility }) => {
   const { cart, clearCart, addToCart } = useCart();
 
   return (
     <>
-      <label className="cart-button" htmlFor={cartCheckBoxId}>
-        <FontAwesomeIcon icon={faCartShopping} />
-      </label>
-      <input id={cartCheckBoxId} type="checkbox" hidden />
-      <aside className="cart">
-        {
-          cart.length > 0 ? (<> <ul>
-            {cart.map(product => (
-              <CartItem key={product.id} addToCart={() => addToCart(product)} {...product} />
-            ))
-  
-            }
-          </ul>
-          <div className="button-container">
-            <button className="clear-button" onClick={clearCart}>
-              Clear
-            </button>
+      <div className={`${"modal"} ${visible && "modal-show"}`}>
+        <div className="cart">
+          <div className="modal-dialog">
+            <div className="modal-header">
+              <div className="close-button">
+                <FontAwesomeIcon icon={faCircleXmark} size="xl" onClick={handleVisibility}/>
+              </div>
+            </div>
+            {cart.length > 0 ? (
+              <>
+                {" "}
+                <ul>
+                  {cart.map((product) => (
+                    <CartItem
+                      key={product.id}
+                      addToCart={() => addToCart(product)}
+                      {...product}
+                    />
+                  ))}
+                </ul>
+                <div className="button-container">
+                  <button className="clear-button" onClick={clearCart}>
+                    Clear
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <p className="empty-cart">Your cart is empty!</p>
+              </>
+            )}
           </div>
-          </>) : (<><p className="empty-cart">Your cart is empty!</p></>)
-        }
-        
-      </aside>
+        </div>
+      </div>
     </>
   );
 };

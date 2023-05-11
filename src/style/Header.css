@@ -5,6 +5,25 @@
   position: relative;
 }
 
+.cart-button {
+  background: var(--dark-blue);
+  color: var(--yellow);
+  border-radius: 9999px;
+  border: 1px solid var(--dark-blue);
+  cursor: pointer;
+  height: 36px;
+  padding: 8px;
+  transition: all 0.3s ease;
+  width: 36px;
+  position: absolute;
+  right: 20px;
+  top: 0;
+}
+
+.cart-button:hover {
+  scale: 1.1;
+}
+
 .header h1 {
   color: var(--dark-blue);
   padding-bottom: 20px;
