@@ -28,10 +28,25 @@ const reducer = (state, action) => {
         },
       ];
     }
-    // case "REMOVE_FROM_CART": {
-    //   const { id } = actionPayload;
-    //   return state.filter((item) => item.id !== id);
-    // }
+    case "REMOVE_ONE_FROM_CART": {
+      const { id } = actionPayload;
+      // check if the product is already in the cart
+      const productInCartIndex = state.findIndex((item) => item.id === id);
+
+      if (productInCartIndex >= 0) {
+        const newState = structuredClone(state); // structuredClone creates a deep copy
+        if (newState[productInCartIndex].quantity > 1) {
+          newState[productInCartIndex].quantity -= 1;
+          return newState;
+        } else {
+          return state.filter((item) => item.id !== id);
+        }
+      }
+    }
+    case "REMOVE_FROM_CART": {
+      const { id } = actionPayload;
+      return state.filter((item) => item.id !== id);
+    }
     case "CLEAR_CART": {
       return initialState;
     }
@@ -49,16 +64,21 @@ export const CartProvider = ({ children }) => {
       payload: product,
     });
 
-  //   const removeFromCart = (product) =>
-  //     dispatch({
-  //       type: "REMOVE_FROM_CART",
-  //       payload: product,
-  //     });
+  const removeFromCart = (product) =>
+    dispatch({
+      type: "REMOVE_FROM_CART",
+      payload: product,
+    });
 
   const clearCart = () => dispatch({ type: "CLEAR_CART" });
 
+  const removeOne = (product) =>
+    dispatch({ type: "REMOVE_ONE_FROM_CART", payload: product });
+
   return (
-    <CartContext.Provider value={{ cart: state, addToCart, clearCart }}>
+    <CartContext.Provider
+      value={{ cart: state, addToCart, clearCart, removeOne, removeFromCart }}
+    >
       {children}
     </CartContext.Provider>
   );

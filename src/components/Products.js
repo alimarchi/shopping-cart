@@ -5,7 +5,7 @@ import ReactPaginate from "react-paginate";
 import "../style/Products.css";
 import useCart from "../hooks/useCart";
 
-const Products = ({ products }) => {
+const Products = ({ products, handleVisibility }) => {
   const { addToCart } = useCart();
 
   const [pageNumber, setPageNumber] = useState(0);
@@ -40,7 +40,10 @@ const Products = ({ products }) => {
               <div className="button-container">
                 <button
                   className="add-button"
-                  onClick={() => addToCart(product)}
+                  onClick={() => {
+                    addToCart(product);
+                    handleVisibility();
+                  }}
                 >
                   Add to cart
                 </button>

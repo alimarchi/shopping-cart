@@ -3,7 +3,6 @@ export const getProducts = () => {
     .then((res) => res.json())
     .then((data) => {
       if (!data.errors) {
-        console.log(data)
         return data.products;
         
       } else {

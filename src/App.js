@@ -41,7 +41,12 @@ const App = () => {
         )}
         <Header handleVisibility={handleVisibility} />
         {loading && <Loader />}
-        {!loading && <Products products={filteredProducts} />}
+        {!loading && (
+          <Products
+            products={filteredProducts}
+            handleVisibility={handleVisibility}
+          />
+        )}
       </CartProvider>
       <Footer />
     </>
