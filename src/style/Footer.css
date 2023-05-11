@@ -4,6 +4,8 @@
   text-align: center;
   margin-top: auto;
   padding: 6px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .heart {
