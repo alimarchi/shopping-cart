@@ -158,11 +158,12 @@
 
 .button-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
 }
 
-.clear-button {
+.clear-back-button {
   background-color: var(--dark-blue);
   color: var(--yellow);
   border-radius: 5px;
@@ -171,6 +172,7 @@
   font-weight: bold;
   margin-bottom: 10px;
   font-size: 14px;
+  cursor: pointer;
 }
 
 /* Tablet devices */
