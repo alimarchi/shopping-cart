@@ -85,7 +85,7 @@ ul {
 
 /* pagination style */
 
-.pagination-buttons {
+.pagination {
   width: 50%;
   height: 40px;
   display: flex;
@@ -95,7 +95,7 @@ ul {
   font-family: "Montserrat", sans-serif;
 }
 
-.pagination-buttons a {
+.pagination-buttons{
   padding: 10px;
   margin: 8px;
   border: 1px solid var(--dark-blue);
@@ -104,17 +104,24 @@ ul {
   cursor: pointer;
 }
 
-.pagination-buttons a:hover {
+.pagination-buttons:not(.pagination-disabled):hover {
   color: white;
   background-color: var(--dark-blue);
 }
 
-.pagination-active a {
+.pagination-numbers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.pagination-active {
   color: white;
   background-color: var(--dark-blue);
 }
 
-.pagination-disabled a {
+.pagination-disabled {
   opacity: 0.5;
   cursor: unset;
 }

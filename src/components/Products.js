@@ -1,23 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Pagination from "./Pagination";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import ReactPaginate from "react-paginate";
 import "../style/Products.css";
 import useCart from "../hooks/useCart";
 
 const Products = ({ products, handleVisibility }) => {
   const { addToCart } = useCart();
 
-  const [pageNumber, setPageNumber] = useState(0);
+  const totalProducts = products.length;
+  const [productsPerPage, setProductsPerPage] = useState(12);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const productsPerPage = 12;
-  const pagesVisited = pageNumber * productsPerPage;
+  const lastIndex = currentPage * productsPerPage;
+  const firstIndex = lastIndex - productsPerPage;
 
-  const pageCount = Math.ceil(products.length / productsPerPage); //round up
-
-  const changePage = ({ selected }) => {
-    setPageNumber(selected);
-  };
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [products]);
 
   return (
     <main className="products">
@@ -50,20 +50,13 @@ const Products = ({ products, handleVisibility }) => {
               </div>
             </li>
           ))
-          .slice(pagesVisited, pagesVisited + productsPerPage)}
+          .slice(firstIndex, lastIndex)}
       </ul>
-      <ReactPaginate
-        previousLabel={"<"}
-        nextLabel={">"}
-        pageCount={pageCount}
-        marginPagesDisplayed={1}
-        pageRangeDisplayed={1}
-        onPageChange={changePage}
-        containerClassName={"pagination-buttons"}
-        previousLinkClassName={"previous-button"}
-        nextLinkClassName={"next-button"}
-        disabledClassName={"pagination-disabled"}
-        activeClassName={"pagination-active"}
+      <Pagination
+        productsPerPage={productsPerPage}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalProducts={totalProducts}
       />
     </main>
   );
