@@ -61,7 +61,7 @@ ul {
   font-weight: bold;
 }
 
-.button-container {
+.product-card .button-container {
   display: flex;
   justify-content: center;
   align-items: center;
