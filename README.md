@@ -14,9 +14,6 @@ This web application is built using React and JavaScript, and it serves as an e-
 - **useContext**: The application leverages the useContext hook to create a cart and filters context. This allows for easy sharing and access of the cart and filters data throughout the application, eliminating the need for prop drilling and enhancing code organization.
 - **useReducer**: The useReducer hook is utilized to simplify the logic for managing different actions that operate on the shopping cart state. This enables a more streamlined and maintainable approach to handling cart-related functionality.
 
-
-Here are the main features of the application:
-
 #### Libraries
 
 - [Font Awesome](https://fontawesome.com/v5/docs/web/use-with/react)
