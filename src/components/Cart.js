@@ -53,10 +53,15 @@ const Cart = ({ visible, handleVisibility }) => {
                 </ul>
                 <div className="total-container">
                   <p>Total</p>
-                  <p><strong>{totalPrice}€</strong></p>
+                  <p>
+                    <strong>{totalPrice}€</strong>
+                  </p>
                 </div>
                 <div className="button-container">
-                <button className="clear-back-button" onClick={handleVisibility}>
+                  <button
+                    className="clear-back-button"
+                    onClick={handleVisibility}
+                  >
                     Back
                   </button>
                   <button className="clear-back-button" onClick={clearCart}>

@@ -30,6 +30,7 @@ const App = () => {
       setProducts(results);
       setLoading(false);
     });
+    console.log("se cargan los productos");
   }, []);
 
   return (
@@ -44,7 +45,6 @@ const App = () => {
         {!loading && (
           <Products
             products={filteredProducts}
-            handleVisibility={handleVisibility}
           />
         )}
       </CartProvider>

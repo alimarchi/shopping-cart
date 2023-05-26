@@ -5,8 +5,24 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "../style/Products.css";
 import useCart from "../hooks/useCart";
 
-const Products = ({ products, handleVisibility }) => {
+const Products = ({ products }) => {
   const { addToCart } = useCart();
+
+  const [buttonTexts, setButtonTexts] = useState({});
+
+  const handleButton = (productId) => {
+    setButtonTexts((prevButtonTexts) => ({
+      ...prevButtonTexts,
+      [productId]: "Added!",
+    }));
+
+    setTimeout(() => {
+      setButtonTexts((prevButtonTexts) => ({
+        ...prevButtonTexts,
+        [productId]: "Add to cart",
+      }));
+    }, 3000);
+  };
 
   const totalProducts = products.length;
   const [productsPerPage, setProductsPerPage] = useState(12);
@@ -42,10 +58,10 @@ const Products = ({ products, handleVisibility }) => {
                   className="add-button"
                   onClick={() => {
                     addToCart(product);
-                    handleVisibility();
+                    handleButton(product.id);
                   }}
                 >
-                  Add to cart
+                  {buttonTexts[product.id] || "Add to cart"}
                 </button>
               </div>
             </li>
