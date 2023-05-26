@@ -4,6 +4,8 @@
 
 This web application is built using React and JavaScript, and it serves as an e-commerce platform. The application retrieves product data from an API and displays them in a paginated manner. Users have the ability to filter the products based on category or minimum price. The application includes a shopping cart feature, which appears as a modal window. Users can add products to the cart and manage the quantity of items. Additionally, they have the option to remove individual products or clear the entire cart.
 
+App is live [here](https://alimarchi.github.io/shopping-cart/), check it out!
+
 #### Features
 - **Pagination**: Products are displayed in pages, allowing users to easily navigate through the available products. Users can click on previous or next buttons or directly select the page number. The pagination functionality is implemented using a custom Pagination component, without relying on external libraries.
 - **Responsive Design**: The application has been thoughtfully designed with pure CSS to ensure a seamless experience across a variety of devices, including mobile, tablet, and laptop screens. The responsive layout provides optimal usability and visual appeal.
